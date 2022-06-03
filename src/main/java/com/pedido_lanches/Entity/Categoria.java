@@ -1,37 +1,64 @@
 package com.pedido_lanches.Entity;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "categorias")
 public class Categoria implements Serializable{
 private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Getter
-	@Setter
 	private Long id;
-	@Getter
-	@Setter
 	private String nome;
+	
+	@OneToMany(mappedBy = "categoria")
+	private List<Produto> produto;
 	
 	public Categoria() {}
 
-	public Categoria(Long id, String nome) {
+	public Categoria(Long id, String nome, List<Produto> produto) {
 		super();
 		this.id = id;
 		this.nome = nome;
+		this.produto = produto;
+	}
+	
+	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public List<Produto> getProduto() {
+		return produto;
+	}
+
+	public void setProduto(List<Produto> produto) {
+		this.produto = produto;
 	}
 
 	@Override

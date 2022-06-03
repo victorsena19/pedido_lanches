@@ -13,17 +13,12 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 	@Entity
-	@Table(name = "pagamentos")
 public class Pagamento implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Getter
-	@Setter
 	private Long id;
-	@Getter
-	@Setter
 	private Instant momento;
 	
 	public Pagamento() {}
@@ -31,6 +26,22 @@ public class Pagamento implements Serializable{
 	public Pagamento(Long id, Instant momento) {
 		super();
 		this.id = id;
+		this.momento = momento;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Instant getMomento() {
+		return momento;
+	}
+
+	public void setMomento(Instant momento) {
 		this.momento = momento;
 	}
 

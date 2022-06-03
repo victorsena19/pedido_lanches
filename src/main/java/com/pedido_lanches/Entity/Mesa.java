@@ -2,52 +2,56 @@ package com.pedido_lanches.Entity;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
-import lombok.Getter;
-import lombok.Setter;
-
+import javax.persistence.OneToMany;
 
 @Entity
-@Table(name = "mesas")
 public class Mesa implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Getter
-	@Setter
 	private Long id;
-	@Getter
-	@Setter
 	private int numero;
 	
-	@OneToOne(mappedBy = "mesa", cascade = CascadeType.ALL)
-	private Pedido pedido;
+	@OneToMany(mappedBy = "mesa")
+	private List<Pedido> pedido;
 	
 	public Mesa() {}
 
-	public Mesa(Long id, int numero, Pedido pedido) {
+	public Mesa(Long id, int numero, List<Pedido> pedido) {
 		super();
 		this.pedido = pedido;
 		this.id = id;
 		this.numero = numero;
 	}
 	
-	
+	public Long getId() {
+		return id;
+	}
 
-	public Pedido getPedido() {
+	public void ListId(Long id) {
+		this.id = id;
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void ListNumero(int numero) {
+		this.numero = numero;
+	}
+
+	public List<Pedido> getPedido() {
 		return pedido;
 	}
 
-	public Pedido setPedido() {
-		return pedido;
+	public void ListPedido(List<Pedido> pedido) {
+		this.pedido = pedido;
 	}
 
 	@Override

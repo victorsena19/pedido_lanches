@@ -14,6 +14,32 @@ public class ProdutoService {
 	private ProdutoRepository produtoRepository;
 	
 	public List<Produto> getAll(){
-		return produtoRepository.findAll();
+		List<Produto> list = produtoRepository.findAll();
+		return list;
+	}
+	
+	public List<Produto> getId(Long id){
+		List<Produto> list = produtoRepository.getId(id);
+		return list;
+	}
+		
+		public List<Produto> getNome(String nome) {
+			List<Produto> list = produtoRepository.getNome(nome.toLowerCase());
+			return list;
+	}
+		
+		public List<Produto> getDescricao(String descricao){
+			List<Produto> list = produtoRepository.getDescricao(descricao.toLowerCase());
+			return list;
+	}
+		
+		public List<Produto> getDescricao(Double preco){
+			List<Produto> list = produtoRepository.getPreco(preco);
+			return list;
+	}
+		
+		public List<Produto> getFto(String foto){
+			List<Produto> list = produtoRepository.getDescricao(foto.toLowerCase());
+			return list;
 	}
 }

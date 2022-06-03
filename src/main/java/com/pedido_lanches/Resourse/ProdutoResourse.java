@@ -12,4 +12,6 @@ public class ProdutoResourse {
 
 	@Autowired
 	private ProdutoService produtoService;
+	
+	
 }

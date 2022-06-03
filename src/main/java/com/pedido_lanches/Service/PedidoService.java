@@ -12,7 +12,17 @@ public class PedidoService {
 	
 	private PedidoRepository pedidoRepository;
 	
+	public List<Pedido> getId(Long id){
+		List<Pedido> list = pedidoRepository.getId(id);
+		return list;
+	}
+	
+	public List<Pedido> getNumero(Integer numero){
+		List<Pedido> list = pedidoRepository.getNumPedido(numero);
+		return list;
+	}
 	public List<Pedido> getAll(){
-		return pedidoRepository.findAll();
+		List<Pedido> list = pedidoRepository.findAll();
+		return list;
 	}
 }

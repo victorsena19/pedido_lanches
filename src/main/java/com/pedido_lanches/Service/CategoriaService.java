@@ -12,8 +12,19 @@ import com.pedido_lanches.Repository.CategoriaRepository;
 public class CategoriaService {
 	@Autowired
 	private CategoriaRepository categoriaRepository;
-	
-	public List<Categoria> getAll(){
-		return categoriaRepository.findAll();
+
+	public List<Categoria> getAll() {
+		List<Categoria> list = categoriaRepository.findAll();
+		return list;
 	}
-}
+
+	public List<Categoria> getId(Long id) {
+		List<Categoria> list = categoriaRepository.getId(id);
+		return list;
+	}
+
+	public List<Categoria> getNome(String nome){
+		List<Categoria> list = categoriaRepository.getNome(nome);
+		return list;
+	}
+}	
