@@ -17,4 +17,13 @@ public class StatusPedidoService {
 	public List<StatusPedido> getAll(){
 		return statusPedidoRepository.findAll();
 	}
+	
+	public List<StatusPedido> getId(Long id){
+		List<StatusPedido> list = statusPedidoRepository.getId(id);
+		return list;
+	}
+	public List<StatusPedido> getDescricao(String descricao){
+		List<StatusPedido> list = statusPedidoRepository.getDescricao(descricao.toLowerCase());
+		return list;
+	}
 }

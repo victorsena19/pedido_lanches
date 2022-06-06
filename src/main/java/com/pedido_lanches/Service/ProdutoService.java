@@ -33,12 +33,12 @@ public class ProdutoService {
 			return list;
 	}
 		
-		public List<Produto> getDescricao(Double preco){
+		public List<Produto> getPreco(Double preco){
 			List<Produto> list = produtoRepository.getPreco(preco);
 			return list;
 	}
 		
-		public List<Produto> getFto(String foto){
+		public List<Produto> getFoto(String foto){
 			List<Produto> list = produtoRepository.getDescricao(foto.toLowerCase());
 			return list;
 	}
