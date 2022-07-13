@@ -1,6 +1,5 @@
 package com.pedido_lanches.Repository;
-
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -11,10 +10,12 @@ import com.pedido_lanches.Entity.Pedido;
 
 @Repository
 public interface PedidoRepository extends JpaRepository<Pedido, Long>{
+	
 	@Query("FROM Pedido p WHERE p.id = :id")
-	List<Pedido> getId(@Param("id")Long id);
+	Optional<Pedido> getId(@Param("id")Long id);
 	
 	@Query("FROM Pedido p WHERE p.numPedido = :numPedido")
-	List<Pedido> getNumPedido(@Param("numPedido")Integer numero);
+	Optional<Pedido> getNumPedido(@Param("numPedido")Integer numPedido);
+	
 	
 }

@@ -9,13 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Produto implements Serializable{
@@ -27,18 +24,18 @@ public class Produto implements Serializable{
 	private String descricao;
 	private Double preco;
 	private String foto;
+	
 	@ManyToOne
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
+	
+	@JsonIgnore
 	@ManyToMany
-	@JoinTable(name = "pedido_produto", joinColumns = @JoinColumn(name = "produto_id"), 
-	inverseJoinColumns = @JoinColumn(name = "pedido_id"))
 	private List<Pedido> pedido;
 	
 	public Produto() {}
 
-	public Produto(Long id, String nome, String descricao, Double preco, String foto, Categoria categoria, 
-			List<Pedido> pedido) {
+	public Produto(Long id, String nome, String descricao, Double preco, String foto, Categoria categoria, List<Pedido> pedido) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -46,7 +43,6 @@ public class Produto implements Serializable{
 		this.preco = preco;
 		this.foto = foto;
 		this.categoria = categoria;
-		this.pedido = pedido;
 	}
 	
 	public Long getId() {
@@ -89,20 +85,17 @@ public class Produto implements Serializable{
 		this.foto = foto;
 	}
 
+	
 	public Categoria getCategoria() {
 		return categoria;
 	}
-
+	
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
 
 	public List<Pedido> getPedido() {
 		return pedido;
-	}
-
-	public void setPedido(List<Pedido> pedido) {
-		this.pedido = pedido;
 	}
 
 	@Override

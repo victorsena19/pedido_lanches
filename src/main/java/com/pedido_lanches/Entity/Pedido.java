@@ -10,38 +10,43 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 public class Pedido implements Serializable{
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Integer numPedido;
 	private Instant momentoPedido;
 	private Double totalPedido;
+	
 	@ManyToOne
 	@JoinColumn(name = "mesa_id")
 	private Mesa mesa;
-	@ManyToMany(mappedBy = "pedido")
+	
+	@ManyToMany
+	@JoinTable(name = "pedido_produto", joinColumns = @JoinColumn(name = "pedido_id"), 
+	inverseJoinColumns = @JoinColumn(name = "produto_id"))
 	private List<Produto> produto;
+	
 	@OneToOne
-	@JoinColumn(name = "pedido_Status_id")
+	@JoinColumn(name = "status_pedido_id")
 	private StatusPedido statusPedido;
 	
-	
+	@ManyToOne
+	@JoinColumn(name = "pagamento_id")
+	private Pagamento pagamento;
 	
 	public Pedido() {}
 
-	public Pedido(Long id, int numPedido, Instant momentoPedido, Double totalPedido,Mesa mesa, 
-			List<Produto> produto, StatusPedido statusPedido) {
+	public Pedido(Long id, Integer numPedido, Instant momentoPedido, Double totalPedido, Mesa mesa,
+			List<Produto> produto, StatusPedido statusPedido, Pagamento pagamento) {
 		super();
 		this.id = id;
 		this.numPedido = numPedido;
@@ -50,9 +55,9 @@ public class Pedido implements Serializable{
 		this.mesa = mesa;
 		this.produto = produto;
 		this.statusPedido = statusPedido;
+		this.pagamento = pagamento;
+		
 	}
-	
-	
 
 	public Long getId() {
 		return id;
@@ -62,11 +67,11 @@ public class Pedido implements Serializable{
 		this.id = id;
 	}
 
-	public int getNumPedido() {
+	public Integer getNumPedido() {
 		return numPedido;
 	}
 
-	public void setNumPedido(int numPedido) {
+	public void setNumPedido(Integer numPedido) {
 		this.numPedido = numPedido;
 	}
 
@@ -98,9 +103,6 @@ public class Pedido implements Serializable{
 		return produto;
 	}
 
-	public void setProduto(List<Produto> produto) {
-		this.produto = produto;
-	}
 
 	public StatusPedido getStatusPedido() {
 		return statusPedido;
@@ -108,6 +110,14 @@ public class Pedido implements Serializable{
 
 	public void setStatusPedido(StatusPedido statusPedido) {
 		this.statusPedido = statusPedido;
+	}
+	
+	public Pagamento getPagamento(){
+		return pagamento;
+	}
+	
+	public void setPagamento(Pagamento pagamento) {
+		this.pagamento = pagamento;
 	}
 
 	@Override
@@ -126,6 +136,7 @@ public class Pedido implements Serializable{
 		Pedido other = (Pedido) obj;
 		return Objects.equals(id, other.id);
 	}
+	
 	
 	
 }

@@ -1,8 +1,8 @@
 package com.pedido_lanches.Entity;
 
 import java.io.Serializable;
-import java.util.Objects;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,45 +13,39 @@ import javax.persistence.OneToMany;
 @Entity
 public class Mesa implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private int numero;
-	
-	@OneToMany(mappedBy = "mesa")
-	private List<Pedido> pedido;
-	
+	private Integer numero;
+
 	public Mesa() {}
 
-	public Mesa(Long id, int numero, List<Pedido> pedido) {
+
+	public Mesa(Long id, Integer numero) {
 		super();
-		this.pedido = pedido;
 		this.id = id;
 		this.numero = numero;
 	}
-	
+
+
 	public Long getId() {
 		return id;
 	}
 
-	public void ListId(Long id) {
+
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public int getNumero() {
+
+	public Integer getNumero() {
 		return numero;
 	}
 
-	public void ListNumero(int numero) {
+
+	public void setNumero(Integer numero) {
 		this.numero = numero;
-	}
-
-	public List<Pedido> getPedido() {
-		return pedido;
-	}
-
-	public void ListPedido(List<Pedido> pedido) {
-		this.pedido = pedido;
 	}
 
 	@Override
@@ -71,8 +65,4 @@ public class Mesa implements Serializable {
 		return Objects.equals(id, other.id);
 	}
 
-	
-	
-	
-	
 }

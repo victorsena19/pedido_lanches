@@ -1,6 +1,7 @@
 package com.pedido_lanches.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,13 +19,22 @@ public class MesaService {
 		return list;
 	}
 	
-	public List<Mesa> getId(Long id){
-		List<Mesa> list = mesaRepository.getId(id);
+	public Optional<Mesa> getId(Long id){
+		Optional<Mesa> temp_mesa = mesaRepository.getId(id);
+		
+		if (!temp_mesa.isEmpty()) {
+			return temp_mesa;
+		}
+		return null;	
+	}
+	
+	public Optional<Mesa> getNumero(Integer numero){
+		Optional<Mesa> list = mesaRepository.getNumero(numero);
 		return list;
 	}
 	
-	public List<Mesa> getNumero(Integer numero){
-		List<Mesa> list = mesaRepository.getNumero(numero);
-		return list;
+	public Mesa insert(Mesa mesa) {
+		Mesa list = mesaRepository.save(mesa);
+		return   list;
 	}
 }

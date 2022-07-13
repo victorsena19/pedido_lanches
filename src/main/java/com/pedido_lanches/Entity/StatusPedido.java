@@ -20,17 +20,14 @@ public class StatusPedido implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String descricao;
-	@OneToOne(mappedBy = "statusPedido")
-	private Pedido pedido;
 	
 	
 	public StatusPedido() {}
 
-	public StatusPedido(Long id, String descricao, Pedido pedido) {
+	public StatusPedido(Long id, String descricao) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
-		this.pedido = pedido;
 	}
 	
 	public Long getId() {
@@ -47,14 +44,6 @@ public class StatusPedido implements Serializable{
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-
-	public Pedido getPedido() {
-		return pedido;
-	}
-
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
 	}
 
 	@Override

@@ -1,26 +1,23 @@
 package com.pedido_lanches.Repository;
-
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
+import com.pedido_lanches.Entity.Pedido;
 import com.pedido_lanches.Entity.Produto;
 
+@Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Long>{
+	
 	@Query("FROM Produto p WHERE p.id = :id")
-	List<Produto> getId(@Param("id") Long id);
+	Optional<Produto> getId(@Param("id") Long id);
 	
-	@Query("FROM Produto p WHERE p.nome = :nome")
-	List<Produto> getNome(@Param("nome") String nome);
+	@Query("FROM Produto p WHERE LOWER(p.nome) like %:nome%")
+	Optional<Produto> getNome(@Param("nome") String nome);
 	
-	@Query("FROM Produto p WHERE p.descricao= :descricao")
-	List<Produto> getDescricao(@Param("descricao") String descricao);
 	
-	@Query("FROM Produto p WHERE p.preco = :preco")
-	List<Produto> getPreco(@Param("preco") Double preco);
 	
-	@Query("FROM Produto p WHERE p.foto = :foto")
-	List<Produto> getFoto(@Param("foto") String foto);
 }
