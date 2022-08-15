@@ -5,6 +5,6 @@ public class ObjectNotFoundException extends RuntimeException{
 	
 	public ObjectNotFoundException (Object nome) {
 		super("Esta "+nome+" já existe");
-	}
 
+	}
 }
