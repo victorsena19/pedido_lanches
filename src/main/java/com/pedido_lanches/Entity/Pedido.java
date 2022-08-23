@@ -46,14 +46,14 @@ public class Pedido implements Serializable{
 	public Pedido() {}
 
 	public Pedido(Long id, Integer numPedido, Instant momentoPedido, Double totalPedido, Mesa mesa,
-			List<Produto> produto, StatusPedido statusPedido, Pagamento pagamento) {
+			List<Produto> produtos, StatusPedido statusPedido, Pagamento pagamento) {
 		super();
 		this.id = id;
 		this.numPedido = numPedido;
 		this.momentoPedido = momentoPedido;
 		this.totalPedido = totalPedido;
 		this.mesa = mesa;
-		this.produto = produto;
+		this.produto = produtos;
 		this.statusPedido = statusPedido;
 		this.pagamento = pagamento;
 		
@@ -99,10 +99,13 @@ public class Pedido implements Serializable{
 		this.mesa = mesa;
 	}
 
-	public List<Produto> getProduto() {
+	public List<Produto> getProdutos() {
 		return produto;
 	}
-
+	
+	public void setProdutos(List<Produto> produto) {
+		this.produto = produto;
+	}
 
 	public StatusPedido getStatusPedido() {
 		return statusPedido;

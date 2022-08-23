@@ -17,5 +17,5 @@ public interface PagamentoRepository extends JpaRepository<Pagamento, Long>{
 	Optional<Pagamento> getId(@Param("id") Long id);
 	
 	@Query("FROM Pagamento p WHERE p.momento = :momento")
-	List<Pagamento> getMomento(@Param("momento") Instant momento);
+	Optional<Pagamento> getMomento(@Param("momento") Instant momento);
 }

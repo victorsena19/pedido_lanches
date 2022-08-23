@@ -47,7 +47,8 @@ public class CategoriaResourse {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Categoria> insert(@RequestBody Categoria cat) {
+	public ResponseEntity<Categoria> insert(Categoria cat,
+			@RequestParam(value = "nome")String nome) {
 		List<Categoria> list = categoriaService.getNome(cat.getNome());
 		if (list.isEmpty()) {
 			Categoria categ = categoriaService.insert(cat);

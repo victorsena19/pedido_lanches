@@ -9,27 +9,26 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pedido_lanches.Entity.Categoria;
 import com.pedido_lanches.Entity.Messege;
 import com.pedido_lanches.Entity.Produto;
 import com.pedido_lanches.Exception.ObjectNotFoundException;
-import com.pedido_lanches.Repository.ProdutoRepository;
+import com.pedido_lanches.Service.CategoriaService;
 import com.pedido_lanches.Service.ProdutoService;
 
 @RestController
 @RequestMapping(value = "/produtos")
 public class ProdutoResourse {
+	
+	CategoriaService categoriaService;
 
 	@Autowired
 	private ProdutoService produtoService;
-	
-	@Autowired
-	private ProdutoRepository repository;
 	
 	@RequestMapping(path = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Optional<Produto>> getId(@PathVariable Long id){
@@ -55,36 +54,55 @@ public class ProdutoResourse {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Optional<Produto>> insert(@RequestBody Produto produto){
+	public ResponseEntity<Optional<Produto>> insert(Produto produto,
+			@RequestParam(value = "nome")String nome,
+			@RequestParam(value = "descricao", required = false)String descricao,
+			@RequestParam(value = "preco")Double preco,
+			@RequestParam(value = "foto", required = false)String foto){
 		Optional<Produto> list = produtoService.getNome(produto.getNome());
 		if(list.isEmpty()) {
 			produtoService.insert(produto);
 			list = produtoService.getNome(produto.getNome());
 			return ResponseEntity.created(null).body(list);
 		}else {
-			throw new ObjectNotFoundException("RRODUTO");
+			throw new ObjectNotFoundException("RRODUTO NÃO EXISTE");
 		}
 	}
-	@PutMapping
-	public ResponseEntity<Optional<Produto>> update(@RequestBody Produto produto){
-		Optional<Produto> list = produtoService.getNome(produto.getNome());
-		if(list.isEmpty()) {
-			produtoService.update(produto);
-			list = produtoService.getNome(produto.getNome());
-			return ResponseEntity.created(null).body(list);
-		}else {
-			throw new ObjectNotFoundException("RRODUTO");
+	@PutMapping(path = "/{id}")
+	public ResponseEntity<Optional<Produto>> update(@PathVariable Long id,
+			@RequestParam(value = "nome", required = false)String nome,
+			@RequestParam(value = "descricao", required = false)String descricao,
+			@RequestParam(value = "preco", required = false)Double preco,
+			@RequestParam(value = "categoria", required = false)Long categoria
+			){
+		Optional<Produto> produtoId = produtoService.getId(id);
+		if(produtoId.isPresent()) {
+			if(nome != null) {
+				produtoId.get().setNome(nome);
+			}
+			if(descricao != null) {
+				produtoId.get().setDescricao(descricao);
+			}
+			if(preco != null) {
+				produtoId.get().setPreco(preco);
+			}
+			if(categoria != null) {
+				Optional<Categoria> cat = categoriaService.getId(id);
+				produtoId.get().setCategoria(cat.get());
+			}
+			produtoService.update(produtoId.get());
+			produtoId = produtoService.getId(id);
+			return ResponseEntity.ok().body(produtoId);
 		}
+		else {
+			throw new ObjectNotFoundException("RRODUTO NÃO EXISTE");
+		}
+		
 	}
 	
 	@DeleteMapping(path = "/{id}")
-	public Messege delete(@PathVariable Long id) {
-		Optional<Produto> list = produtoService.getId(id);
-		 if(!list.isEmpty()) {
-			 repository.deleteById(id);
-			 return new Messege("OK", "PRODUTO APAGADO COM SUCESSO");
-			 }else {
-			 return new Messege("ERRO AO APAGAR", "ESSE PRODUTO NÃO EXISTE");
-		 }
+	public ResponseEntity<Messege> delete(@PathVariable Long id) {
+		Messege produto = produtoService.delete(id);
+		return ResponseEntity.ok().body(produto);
 	}
 }

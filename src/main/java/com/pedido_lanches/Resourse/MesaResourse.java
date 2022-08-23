@@ -30,9 +30,6 @@ public class MesaResourse {
 	
 	@Autowired
 	private MesaService mesaService;
-	
-	@Autowired
-	private MesaRepository mesaRepository;
 
 	@GetMapping(path = "/{id}")
 	public ResponseEntity<Mesa> getId(@PathVariable Long id){
@@ -64,37 +61,38 @@ public class MesaResourse {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-		public ResponseEntity<Mesa> insert(@RequestBody Mesa mesa){
-		Optional<Mesa> list = mesaRepository.getNumero(mesa.getNumero());
+		public ResponseEntity<Mesa> insert(Mesa mesa,
+				@RequestParam(value = "numero")Integer numero){
+		Optional<Mesa> numeroMesa = mesaService.getNumero(numero);
 			logger.info("Mesa======"+mesa.getNumero().toString());
-			if(!list.isEmpty()) {
-				Mesa list1 = mesaService.insert(mesa);
-				return ResponseEntity.created(null).body(list1);
-				}else {
+			if(numeroMesa.isEmpty()) {
+				Mesa numMesa = mesaService.insert(mesa);
+				return ResponseEntity.created(null).body(numMesa);
+				}
+			else {
 				throw new ObjectNotFoundException(mesa.getNumero());
 			}
 		}
 
 	
-	@RequestMapping(method = RequestMethod.POST, value="/{id}")
+	@RequestMapping(method = RequestMethod.PUT, value="/{id}")
 	public Messege atualizaMesa(
 			@PathVariable Long id,
-			@RequestBody Mesa mesa){
-		if (!mesaRepository.getId(mesa.getId()).isEmpty()) {
+			@RequestParam(value = "numero") Integer numero){
+		if (numero != null) {
+			Optional<Mesa> mesa = mesaService.getId(id);
+			mesa.get().setNumero(numero);
+			mesaService.update(mesa.get());
+			return new Messege("OK", "MESA ALTERADA COM SUCESSO!");
+		}
+		else {
 			return new Messege("Erro", "Não existe essa Mesa");
-		}else {
-			mesaRepository.save(mesa);
-			return new Messege("OK", "Salvo com Sucesso!");
 		}
 	}
 	@RequestMapping(method = RequestMethod.DELETE, value="/{id}")
-	public Messege delete(@PathVariable Long id, Mesa mesa) {
-		if(mesaRepository.getId(mesa.getId()).isEmpty()) {
-			mesaRepository.deleteById(id);
-			return new Messege("OK", "DELETADO COM SUCESSO");
-		}else {
-			return new Messege("ERRO AO DELETAR", "ITEM NÃO EXISTE");
-		}
+	public ResponseEntity<Messege> delete(@PathVariable Long id) {
+		Messege mesa = mesaService.delete(id);
+		return ResponseEntity.ok().body(mesa);
 	}
 	
 }

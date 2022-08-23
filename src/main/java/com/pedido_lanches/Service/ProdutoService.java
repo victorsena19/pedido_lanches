@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pedido_lanches.Entity.Messege;
 import com.pedido_lanches.Entity.Produto;
 import com.pedido_lanches.Repository.ProdutoRepository;
 
@@ -38,5 +39,17 @@ public class ProdutoService {
 	public Produto update(Produto produto) {
 		Produto save = produtoRepository.save(produto);
 		return save;
+	}
+	
+	public Messege delete(Long produto) {
+		Optional<Produto> produtoId = produtoRepository.getId(produto);
+		if(produtoId.isPresent()) {
+			produtoRepository.deleteById(produto);
+			return new Messege("OK", "PRODUTO DELETADO");
+		}
+		else {
+			return new Messege("ERRO", "ESSE PRODUTO NÃO EXISTE");
+		}
+		
 	}
 }

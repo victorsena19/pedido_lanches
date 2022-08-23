@@ -30,13 +30,13 @@ public class CategoriaService {
 		return list;
 	}
 	
-	public Categoria insert(Categoria obj) {
-		return categoriaRepository.save(obj); 
+	public Categoria insert(Categoria categoria) {
+		return categoriaRepository.save(categoria); 
 	}
 	
-	public Categoria update(Long id, Categoria cat){
+	public Categoria update(Long id, Categoria categoria){
 		Categoria categ = categoriaRepository.getReferenceById(id);
-		updateData(categ, cat);
+		updateData(categ, categoria);
 		return categoriaRepository.save(categ);
 	}
 	

@@ -9,6 +9,7 @@ import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pedido_lanches.Entity.Messege;
 import com.pedido_lanches.Entity.Pedido;
 import com.pedido_lanches.Entity.Produto;
 import com.pedido_lanches.Repository.PedidoRepository;
@@ -58,7 +59,7 @@ public class PedidoService {
 		Optional<Produto> ProId = produtoRepository.getId(produto);
 	
 		if (PedId.isPresent() && ProId.isPresent()) {
-			PedId.get().getProduto().add(ProId.get());
+			PedId.get().getProdutos().add(ProId.get());
 			pedidoRepository.save(PedId.get());
 			return PedId.get();
 		} else {
@@ -72,7 +73,7 @@ public class PedidoService {
 		Optional<Pedido> pedId = pedidoRepository.getId(pedido);
 		
 		if(proId.isPresent() && pedId.isPresent()) {
-			pedId.get().getProduto().remove(proId.get());
+			pedId.get().getProdutos().remove(proId.get());
 			pedidoRepository.save(pedId.get());
 			return pedId.get();
 		}else {
@@ -80,5 +81,14 @@ public class PedidoService {
 		}
 	}
 	
-	
+	public Messege delete(Long id) {
+		Optional<Pedido> pedidoId = pedidoRepository.findById(id);
+		if(pedidoId.isPresent()) {
+			pedidoRepository.deleteById(id);
+			return new Messege("OK", "PEEDIDO DELETADO COM SUCESSO");
+		}
+		else {
+			return new Messege("ERRO", "PEEDIDO NÃO EXISTE");
+		}
+	}
 }
