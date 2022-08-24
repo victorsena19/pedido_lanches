@@ -1,6 +1,5 @@
 package com.pedido_lanches.Repository;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,5 +16,5 @@ public interface StatusPedidoRepository extends JpaRepository<StatusPedido, Long
 	Optional<StatusPedido> getId(@Param("id")Long id);
 	
 	@Query("FROM StatusPedido st WHERE LOWER(st.descricao) like %:descricao%")
-	List<StatusPedido> getDescricao(@Param("descricao")String descricao);
+	Optional<StatusPedido> getDescricao(@Param("descricao")String descricao);
 }

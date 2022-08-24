@@ -1,5 +1,7 @@
 package com.pedido_lanches.Resourse;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,59 +29,75 @@ public class StatusPedidoResourse {
 
 	@Autowired
 	private StatusPedidoService statusPedidoService;
-	
+
 	@Autowired
 	StatusPedidoRepository repository;
 
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<Optional<StatusPedido>> getId(@PathVariable Long id){
+	public ResponseEntity<Optional<StatusPedido>> getId(@PathVariable Long id) {
 		Optional<StatusPedido> list = statusPedidoService.getId(id);
 		return ResponseEntity.ok().body(list);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<StatusPedido>> getNumero(
 			@RequestParam(value = "descricao", required = false) String descricao) {
 		if (descricao != null) {
-			List<StatusPedido> list = statusPedidoService.getDescricao(descricao);
-			return ResponseEntity.ok().body(list);
+			Optional<StatusPedido> list = statusPedidoService.getDescricao(descricao);
+			List<StatusPedido> lista = Arrays.asList();
+			lista.add(list.get());
+			return ResponseEntity.ok().body(lista);
 		} else {
 			List<StatusPedido> list = statusPedidoService.getAll();
 			return ResponseEntity.ok().body(list);
 		}
 	}
-		@RequestMapping(method = RequestMethod.POST)
-		public ResponseEntity<List<StatusPedido>> insert(
-				@RequestBody StatusPedido statusPedido) {
-			List<StatusPedido> list = statusPedidoService.getDescricao(statusPedido.getDescricao());
-			if(list.isEmpty()) {
-				statusPedidoService.insert(statusPedido);
-				list = statusPedidoService.getDescricao(statusPedido.getDescricao());
-				return ResponseEntity.created(null).body(list);
-			}else {
-				throw new ObjectNotFoundException("StatusPedido");
-			}
-	}
-		
-		@PutMapping()
-		public Messege update(
-				@RequestBody StatusPedido statusPedido) {
-		if(statusPedidoService.getDescricao(statusPedido.getDescricao()).isEmpty()) {
-			statusPedidoService.insert(statusPedido);
-			return new Messege("OK","ATUALIZADO COM SUCESSO");
-		}else {
-			return new Messege("ERRO","ESSA DESCRIÇÃO JÁ EXISTE");
+
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<Optional<StatusPedido>> insert(@RequestParam(value = "descricao") String descricao) {
+		Optional<StatusPedido> statusPed = statusPedidoService.getDescricao(descricao);
+		if (statusPed.isEmpty()) {
+			StatusPedido statusPedido = new StatusPedido();
+			statusPedido.setDescricao(descricao);
+			statusPedidoService.save(statusPedido);
+			statusPed = statusPedidoService.getDescricao(descricao);
+			return ResponseEntity.created(null).body(statusPed);
+		} else {
+			throw new ObjectNotFoundException("StatusPedido");
 		}
 	}
+
+	@PutMapping(path = "/{id}")
+	public Messege update(
+			@PathVariable Long id, 
+			@RequestParam(value = "descricao") String descricao) {
+		Optional<StatusPedido> statusPedido = statusPedidoService.getId(id);
 		
-		@DeleteMapping(path = "/{id}")
-		public Messege delete(@PathVariable Long id,
-				@RequestBody StatusPedido statusPedido) {
-			if(statusPedidoService.getId(statusPedido.getId()).isEmpty()) {
-				repository.deleteById(id);
-				return new Messege("OK", "DESCRIÇÃO DELETADA COM SUCESSO");
-			}else {
-				return new Messege("ERRO", "DESCRIÇÃO NÃO EXISTE");
+		if (statusPedido.isPresent()) {
+			Optional<StatusPedido> statusPed = statusPedidoService.getDescricao(descricao);
+			if (!statusPed.isPresent()) {
+				statusPedido.get().setDescricao(descricao);
+				statusPedidoService.save(statusPedido.get());
+				return new Messege("OK", "ATUALIZADO COM SUCESSO");
+			} 
+			else {
+				return new Messege("ERRO", "ESSE STATUS DE PEDIDO JÁ EXISTE");
 			}
+		} 
+		else {
+			return new Messege("ERRO", "ESSE STATUS DE PEDIDO NÃO EXISTE");
 		}
+	}
+
+	@DeleteMapping(path = "/{id}")
+	public Messege delete(
+			@PathVariable Long id) {
+		Optional<StatusPedido> statusPedId = statusPedidoService.getId(id);
+		if (statusPedId.isPresent()) {
+			repository.deleteById(id);
+			return new Messege("OK", "STATUS DELETADO COM SUCESSO");
+		} else {
+			return new Messege("ERRO", "DESCRIÇÃO NÃO EXISTE");
+		}
+	}
 }

@@ -25,23 +25,13 @@ public class CategoriaService {
 		return list;
 	}
 
-	public List<Categoria> getNome(String nome){
-		List<Categoria> list = categoriaRepository.getNome(nome.toLowerCase());
+	public Optional<Categoria> getNome(String nome){
+		Optional<Categoria> list = categoriaRepository.getNome(nome.toLowerCase());
 		return list;
 	}
 	
-	public Categoria insert(Categoria categoria) {
+	public Categoria save(Categoria categoria) {
 		return categoriaRepository.save(categoria); 
-	}
-	
-	public Categoria update(Long id, Categoria categoria){
-		Categoria categ = categoriaRepository.getReferenceById(id);
-		updateData(categ, categoria);
-		return categoriaRepository.save(categ);
-	}
-	
-	private void updateData(Categoria categ, Categoria cat) {
-		categ.setNome(cat.getNome());
 	}
 	
 	public Messege delete( Long id) {

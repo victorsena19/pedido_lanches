@@ -23,12 +23,12 @@ public class StatusPedidoService {
 		Optional<StatusPedido> list = statusPedidoRepository.getId(id);
 		return list;
 	}
-	public List<StatusPedido> getDescricao(String descricao){
-		List<StatusPedido> list = statusPedidoRepository.getDescricao(descricao.toLowerCase());
+	public Optional<StatusPedido> getDescricao(String descricao){
+		Optional<StatusPedido> list = statusPedidoRepository.getDescricao(descricao.toLowerCase());
 		return list;
 	}
 	
-	public StatusPedido insert(StatusPedido statusPedido) {
+	public StatusPedido save(StatusPedido statusPedido) {
 		StatusPedido save = statusPedidoRepository.save(statusPedido);
 		return save;
 	}

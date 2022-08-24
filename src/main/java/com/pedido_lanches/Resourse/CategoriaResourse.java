@@ -1,5 +1,6 @@
 package com.pedido_lanches.Resourse;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +28,6 @@ public class CategoriaResourse {
 	@Autowired
 	private CategoriaService categoriaService;
 
-
 	@GetMapping(path = { "/{id}" })
 	public ResponseEntity<Optional<Categoria>> getId(@PathVariable Long id) {
 		Optional<Categoria> list = categoriaService.getId(id);
@@ -37,8 +37,12 @@ public class CategoriaResourse {
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Categoria>> getNome(@RequestParam(value = "nome", required = false) String nome) {
 		if (nome != null) {
-			List<Categoria> categoria = categoriaService.getNome(nome);
-			return ResponseEntity.ok().body(categoria);
+			List<Categoria> addLista = Arrays.asList();
+			Optional<Categoria> categoria = categoriaService.getNome(nome);
+			if (categoria.isPresent()) {
+				addLista.add(categoria.get());
+			}
+			return ResponseEntity.ok().body(addLista);
 		} else {
 			List<Categoria> categoria = categoriaService.getAll();
 			return ResponseEntity.ok().body(categoria);
@@ -47,11 +51,10 @@ public class CategoriaResourse {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Categoria> insert(Categoria cat,
-			@RequestParam(value = "nome")String nome) {
-		List<Categoria> list = categoriaService.getNome(cat.getNome());
+	public ResponseEntity<Categoria> insert(Categoria cat, @RequestParam(value = "nome") String nome) {
+		Optional<Categoria> list = categoriaService.getNome(cat.getNome());
 		if (list.isEmpty()) {
-			Categoria categ = categoriaService.insert(cat);
+			Categoria categ = categoriaService.save(cat);
 			return ResponseEntity.ok().body(categ);
 		} else {
 			throw new ObjectNotFoundException(cat.getNome());
@@ -59,9 +62,22 @@ public class CategoriaResourse {
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Categoria> update(@PathVariable Long id, @RequestBody Categoria categ) {
-		categ = categoriaService.update(id, categ);
-		return ResponseEntity.ok().body(categ);
+	public ResponseEntity<Optional<Categoria>> update(@PathVariable Long id,
+			@RequestParam(value = "nome") String categ) {
+		Optional<Categoria> categoria = categoriaService.getId(id);
+		Optional<Categoria> categNome = categoriaService.getNome(categ);
+		if (categoria.isPresent()) {
+			if (categNome.isEmpty()) {
+				categoria.get().setNome(categ);
+				categoriaService.save(categoria.get());
+			}else {
+				throw new ObjectNotFoundException("Categoria");
+			}
+			return ResponseEntity.ok().body(categoria);
+		} else {
+			throw new ObjectNotFoundException("ESSA CATEGORIA NÃO EXISTE");
+		}
+
 	}
 
 	@DeleteMapping(value = "/{id}")

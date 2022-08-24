@@ -1,6 +1,5 @@
 package com.pedido_lanches.Repository;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,5 +16,5 @@ public interface CategoriaRepository extends JpaRepository<Categoria, Long>{
 	Optional<Categoria> getId(@Param("id") Long id);
 	
 	@Query("FROM Categoria c WHERE LOWER(c.nome) LIKE %:nome%")
-	List<Categoria> getNome(@Param("nome") String nome);
+	Optional<Categoria> getNome(@Param("nome") String nome);
 }
