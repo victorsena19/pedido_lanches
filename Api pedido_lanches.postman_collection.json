@@ -1,0 +1,2171 @@
+{
+	"info": {
+		"_postman_id": "bcb36a5e-d645-47c4-ba46-df93b6b5d832",
+		"name": "Api pedido_lanches",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pedidos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pedidos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pedidos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Pedidos",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pedidos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pedidos"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 19:07:13 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"numPedido\": 1,\n        \"momentoPedido\": \"2022-06-09T09:23:07Z\",\n        \"totalPedido\": 50.2,\n        \"mesa\": {\n            \"id\": 1,\n            \"numero\": 1\n        },\n        \"statusPedido\": {\n            \"id\": 1,\n            \"descricao\": \"Pago\"\n        },\n        \"pagamento\": {\n            \"id\": 1,\n            \"momento\": \"2022-06-09T09:23:07Z\"\n        },\n        \"produtos\": [\n            {\n                \"id\": 1,\n                \"nome\": \"X Salada\",\n                \"descricao\": \"Pão, Hambuerguer, Alface, Presunto e Queijo\",\n                \"preco\": 12.5,\n                \"foto\": null,\n                \"categoria\": {\n                    \"id\": 1,\n                    \"nome\": \"Lanches\"\n                }\n            },\n            {\n                \"id\": 2,\n                \"nome\": \"X Egg\",\n                \"descricao\": \"Pão, Hambuerguer, Ovo, Presunto e Queijo\",\n                \"preco\": 13,\n                \"foto\": null,\n                \"categoria\": {\n                    \"id\": 1,\n                    \"nome\": \"Lanches\"\n                }\n            }\n        ]\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Categorias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/categorias",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categorias"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Categorias",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/categorias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 19:08:09 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"nome\": \"Lanches\"\n    },\n    {\n        \"id\": 2,\n        \"nome\": \"Bebidas\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Mesas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/mesas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mesas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Mesas",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/mesas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"mesas"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 19:08:16 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"numero\": 1\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Pagamentos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pagamentos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pagamentos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Pagamentos",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pagamentos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pagamentos"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 19:08:27 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"momento\": \"2022-06-09T09:23:07Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Produto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/produtos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"produtos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Produto",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/produtos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produtos"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 19:08:43 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"nome\": \"X Salada\",\n        \"descricao\": \"Pão, Hambuerguer, Alface, Presunto e Queijo\",\n        \"preco\": 12.5,\n        \"foto\": null,\n        \"categoria\": {\n            \"id\": 1,\n            \"nome\": \"Lanches\"\n        }\n    },\n    {\n        \"id\": 2,\n        \"nome\": \"X Egg\",\n        \"descricao\": \"Pão, Hambuerguer, Ovo, Presunto e Queijo\",\n        \"preco\": 13,\n        \"foto\": null,\n        \"categoria\": {\n            \"id\": 1,\n            \"nome\": \"Lanches\"\n        }\n    },\n    {\n        \"id\": 3,\n        \"nome\": \"Coca-lata\",\n        \"descricao\": \"Refrigerante de 350 ML\",\n        \"preco\": 5,\n        \"foto\": null,\n        \"categoria\": {\n            \"id\": 2,\n            \"nome\": \"Bebidas\"\n        }\n    },\n    {\n        \"id\": 4,\n        \"nome\": \"Coca 1 litro\",\n        \"descricao\": \"Refrigerante de 1 litro\",\n        \"preco\": 7,\n        \"foto\": null,\n        \"categoria\": {\n            \"id\": 2,\n            \"nome\": \"Bebidas\"\n        }\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "StatusPedido",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/statuspedidos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"statuspedidos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "StatusPedido",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/statuspedidos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"statuspedidos"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 19:08:51 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"descricao\": \"Pago\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Produtos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nome",
+							"value": "guarana2",
+							"type": "default"
+						},
+						{
+							"key": "descricao",
+							"value": "refrigerante lata",
+							"type": "default"
+						},
+						{
+							"key": "preco",
+							"value": "5.00",
+							"type": "default"
+						},
+						{
+							"key": "foto",
+							"value": "null",
+							"type": "default",
+							"disabled": true
+						},
+						{
+							"key": "categoria",
+							"value": "2",
+							"type": "default",
+							"disabled": true
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/produtos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"produtos"
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": "guarana",
+							"disabled": true
+						},
+						{
+							"key": "preco",
+							"value": "7.00",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Produtos",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nome",
+									"value": "guarana2",
+									"type": "default"
+								},
+								{
+									"key": "descricao",
+									"value": "refrigerante lata",
+									"type": "default"
+								},
+								{
+									"key": "preco",
+									"value": "5.00",
+									"type": "default"
+								},
+								{
+									"key": "foto",
+									"value": "null",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "categoria",
+									"value": "2",
+									"type": "default",
+									"disabled": true
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/produtos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produtos"
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "guarana",
+									"disabled": true
+								},
+								{
+									"key": "preco",
+									"value": "7.00",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 19:10:37 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 5,\n    \"nome\": \"guarana2\",\n    \"descricao\": \"refrigerante lata\",\n    \"preco\": 5,\n    \"foto\": null,\n    \"categoria\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Categorias",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nome",
+							"value": "porcao",
+							"type": "default",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/categorias?nome=porcao",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categorias"
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": "porcao"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Categorias",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nome",
+									"value": "porcao",
+									"type": "default",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/categorias?nome=porcao",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias"
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "porcao"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 19:11:01 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 3,\n    \"nome\": \"porcao\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Pedidos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/pedidos?numpedido=4&idmesa=1&totalpedido=20.30&momentopedido=2022-06-09T10:20:12Z&statuspagamento=1&produto=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pedidos"
+					],
+					"query": [
+						{
+							"key": "numpedido",
+							"value": "4"
+						},
+						{
+							"key": "idmesa",
+							"value": "1"
+						},
+						{
+							"key": "totalpedido",
+							"value": "20.30"
+						},
+						{
+							"key": "momentopedido",
+							"value": "2022-06-09T10:20:12Z"
+						},
+						{
+							"key": "statuspagamento",
+							"value": "1"
+						},
+						{
+							"key": "produto",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Pedidos",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/pedidos?numpedido=4&idmesa=1&totalpedido=20.30&momentopedido=2022-06-09T10:20:12Z&statuspagamento=1&produto=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pedidos"
+							],
+							"query": [
+								{
+									"key": "numpedido",
+									"value": "4"
+								},
+								{
+									"key": "idmesa",
+									"value": "1"
+								},
+								{
+									"key": "totalpedido",
+									"value": "20.30"
+								},
+								{
+									"key": "momentopedido",
+									"value": "2022-06-09T10:20:12Z"
+								},
+								{
+									"key": "statuspagamento",
+									"value": "1"
+								},
+								{
+									"key": "produto",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 19:11:14 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 2,\n    \"numPedido\": 4,\n    \"momentoPedido\": \"2022-06-09T10:20:12Z\",\n    \"totalPedido\": 20.3,\n    \"mesa\": {\n        \"id\": 1,\n        \"numero\": 1\n    },\n    \"statusPedido\": {\n        \"id\": 1,\n        \"descricao\": \"Pago\"\n    },\n    \"pagamento\": null,\n    \"produtos\": [\n        {\n            \"id\": 2,\n            \"nome\": \"X Egg\",\n            \"descricao\": \"Pão, Hambuerguer, Ovo, Presunto e Queijo\",\n            \"preco\": 13,\n            \"foto\": null,\n            \"categoria\": {\n                \"id\": 1,\n                \"nome\": \"Lanches\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Pagamentos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pagamentos?momento=2022-08-22T15:58:10Z",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pagamentos"
+					],
+					"query": [
+						{
+							"key": "momento",
+							"value": "2022-08-22T15:58:10Z"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Pagamentos",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pagamentos?momento=2022-08-22T15:58:10Z",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pagamentos"
+							],
+							"query": [
+								{
+									"key": "momento",
+									"value": "2022-08-22T15:58:10Z"
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 19:11:30 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 2,\n    \"momento\": \"2022-08-22T15:58:10Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Mesas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/mesas?numero=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mesas"
+					],
+					"query": [
+						{
+							"key": "numero",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Mesas",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/mesas?numero=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"mesas"
+							],
+							"query": [
+								{
+									"key": "numero",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 19:11:44 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 2,\n    \"numero\": 2\n}"
+				}
+			]
+		},
+		{
+			"name": "StatusPedido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/statuspedidos?descricao=aberto",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"statuspedidos"
+					],
+					"query": [
+						{
+							"key": "descricao",
+							"value": "aberto"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "StatusPedido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/statuspedidos?descricao=aberto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"statuspedidos"
+							],
+							"query": [
+								{
+									"key": "descricao",
+									"value": "aberto"
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 19:11:56 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 3,\n    \"descricao\": \"aberto\"\n}"
+				}
+			]
+		},
+		{
+			"name": "UpdatePedido",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "pedido",
+							"value": "3",
+							"type": "default"
+						},
+						{
+							"key": "produto",
+							"value": "3",
+							"type": "default"
+						},
+						{
+							"key": "totalpedido",
+							"value": "30.00",
+							"type": "default"
+						},
+						{
+							"key": "mesa",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "numpedido",
+							"value": "3",
+							"type": "default"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/pedidos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pedidos",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "UpdatePedido",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "pedido",
+									"value": "3",
+									"type": "default"
+								},
+								{
+									"key": "produto",
+									"value": "3",
+									"type": "default"
+								},
+								{
+									"key": "totalpedido",
+									"value": "30.00",
+									"type": "default"
+								},
+								{
+									"key": "mesa",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "numpedido",
+									"value": "3",
+									"type": "default"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/pedidos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pedidos",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 19:12:23 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"numPedido\": 3,\n    \"momentoPedido\": \"2022-06-09T09:23:07Z\",\n    \"totalPedido\": 30,\n    \"mesa\": {\n        \"id\": 1,\n        \"numero\": 1\n    },\n    \"statusPedido\": {\n        \"id\": 1,\n        \"descricao\": \"Pago\"\n    },\n    \"pagamento\": {\n        \"id\": 1,\n        \"momento\": \"2022-06-09T09:23:07Z\"\n    },\n    \"produtos\": [\n        {\n            \"id\": 1,\n            \"nome\": \"X Salada\",\n            \"descricao\": \"Pão, Hambuerguer, Alface, Presunto e Queijo\",\n            \"preco\": 12.5,\n            \"foto\": null,\n            \"categoria\": {\n                \"id\": 1,\n                \"nome\": \"Lanches\"\n            }\n        },\n        {\n            \"id\": 2,\n            \"nome\": \"X Egg\",\n            \"descricao\": \"Pão, Hambuerguer, Ovo, Presunto e Queijo\",\n            \"preco\": 13,\n            \"foto\": null,\n            \"categoria\": {\n                \"id\": 1,\n                \"nome\": \"Lanches\"\n            }\n        },\n        {\n            \"id\": 3,\n            \"nome\": \"Coca-lata\",\n            \"descricao\": \"Refrigerante de 350 ML\",\n            \"preco\": 5,\n            \"foto\": null,\n            \"categoria\": {\n                \"id\": 2,\n                \"nome\": \"Bebidas\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "UpdateProduto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/produtos/1?nome=x calado&preco=50.00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"produtos",
+						"1"
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": "x calado"
+						},
+						{
+							"key": "preco",
+							"value": "50.00"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "UpdateProduto",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/produtos/1?nome=x calado&preco=50.00",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produtos",
+								"1"
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "x calado"
+								},
+								{
+									"key": "preco",
+									"value": "50.00"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 19:15:08 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"nome\": \"x calado\",\n    \"descricao\": \"Pão, Hambuerguer, Alface, Presunto e Queijo\",\n    \"preco\": 50,\n    \"foto\": null,\n    \"categoria\": {\n        \"id\": 1,\n        \"nome\": \"Lanches\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "UpdatePagamentos",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pagamentos/2?momento=2022-06-22T15:58:10Z",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pagamentos",
+						"2"
+					],
+					"query": [
+						{
+							"key": "momento",
+							"value": "2022-06-22T15:58:10Z"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "UpdatePagamentos",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pagamentos/2?momento=2022-06-22T15:58:10Z",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pagamentos",
+								"2"
+							],
+							"query": [
+								{
+									"key": "momento",
+									"value": "2022-06-22T15:58:10Z"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 19:15:16 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 2,\n    \"momento\": \"2022-06-22T15:58:10Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "UpdateMesa",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/mesas/2?numero=6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mesas",
+						"2"
+					],
+					"query": [
+						{
+							"key": "numero",
+							"value": "6"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "UpdateMesa",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/mesas/2?numero=6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"mesas",
+								"2"
+							],
+							"query": [
+								{
+									"key": "numero",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 19:15:25 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\",\n    \"mensagem\": \"MESA ALTERADA COM SUCESSO!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "UpdateCategorias",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/categorias/3?nome=terere",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categorias",
+						"3"
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": "terere"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "UpdateCategorias",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/categorias/3?nome=terere",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias",
+								"3"
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "terere"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 19:15:53 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 3,\n    \"nome\": \"terere\"\n}"
+				}
+			]
+		},
+		{
+			"name": "UpdateStatusPedidos",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/statuspedidos/2?descricao=concluido",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"statuspedidos",
+						"2"
+					],
+					"query": [
+						{
+							"key": "descricao",
+							"value": "concluido"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "UpdateStatusPedidos",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/statuspedidos/2?descricao=concluido",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"statuspedidos",
+								"2"
+							],
+							"query": [
+								{
+									"key": "descricao",
+									"value": "concluido"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 19:17:34 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\",\n    \"mensagem\": \"ATUALIZADO COM SUCESSO\"\n}"
+				}
+			]
+		},
+		{
+			"name": "InsereProduto",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pedidos/insereproduto?produto=2&pedido=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pedidos",
+						"insereproduto"
+					],
+					"query": [
+						{
+							"key": "produto",
+							"value": "2"
+						},
+						{
+							"key": "pedido",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "InsereProduto",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pedidos/insereproduto?produto=2&pedido=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pedidos",
+								"insereproduto"
+							],
+							"query": [
+								{
+									"key": "produto",
+									"value": "2"
+								},
+								{
+									"key": "pedido",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 19:17:42 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"numPedido\": 1,\n    \"momentoPedido\": \"2022-06-09T09:23:07Z\",\n    \"totalPedido\": 50.2,\n    \"mesa\": {\n        \"id\": 1,\n        \"numero\": 1\n    },\n    \"statusPedido\": {\n        \"id\": 1,\n        \"descricao\": \"Pago\"\n    },\n    \"pagamento\": {\n        \"id\": 1,\n        \"momento\": \"2022-06-09T09:23:07Z\"\n    },\n    \"produtos\": [\n        {\n            \"id\": 1,\n            \"nome\": \"X Salada\",\n            \"descricao\": \"Pão, Hambuerguer, Alface, Presunto e Queijo\",\n            \"preco\": 12.5,\n            \"foto\": null,\n            \"categoria\": {\n                \"id\": 1,\n                \"nome\": \"Lanches\"\n            }\n        },\n        {\n            \"id\": 2,\n            \"nome\": \"X Egg\",\n            \"descricao\": \"Pão, Hambuerguer, Ovo, Presunto e Queijo\",\n            \"preco\": 13,\n            \"foto\": null,\n            \"categoria\": {\n                \"id\": 1,\n                \"nome\": \"Lanches\"\n            }\n        },\n        {\n            \"id\": 2,\n            \"nome\": \"X Egg\",\n            \"descricao\": \"Pão, Hambuerguer, Ovo, Presunto e Queijo\",\n            \"preco\": 13,\n            \"foto\": null,\n            \"categoria\": {\n                \"id\": 1,\n                \"nome\": \"Lanches\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "DeletaProdutoDaLista",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pedidos/deleteproduto?produto=2&pedido=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pedidos",
+						"deleteproduto"
+					],
+					"query": [
+						{
+							"key": "produto",
+							"value": "2"
+						},
+						{
+							"key": "pedido",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "DeletaProdutoDaLista",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pedidos/deleteproduto?produto=2&pedido=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pedidos",
+								"deleteproduto"
+							],
+							"query": [
+								{
+									"key": "produto",
+									"value": "2"
+								},
+								{
+									"key": "pedido",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 19:17:48 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"numPedido\": 1,\n    \"momentoPedido\": \"2022-06-09T09:23:07Z\",\n    \"totalPedido\": 50.2,\n    \"mesa\": {\n        \"id\": 1,\n        \"numero\": 1\n    },\n    \"statusPedido\": {\n        \"id\": 1,\n        \"descricao\": \"Pago\"\n    },\n    \"pagamento\": {\n        \"id\": 1,\n        \"momento\": \"2022-06-09T09:23:07Z\"\n    },\n    \"produtos\": [\n        {\n            \"id\": 1,\n            \"nome\": \"X Salada\",\n            \"descricao\": \"Pão, Hambuerguer, Alface, Presunto e Queijo\",\n            \"preco\": 12.5,\n            \"foto\": null,\n            \"categoria\": {\n                \"id\": 1,\n                \"nome\": \"Lanches\"\n            }\n        },\n        {\n            \"id\": 2,\n            \"nome\": \"X Egg\",\n            \"descricao\": \"Pão, Hambuerguer, Ovo, Presunto e Queijo\",\n            \"preco\": 13,\n            \"foto\": null,\n            \"categoria\": {\n                \"id\": 1,\n                \"nome\": \"Lanches\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Pedidos",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pedidos/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pedidos",
+						"2"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Pedidos",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pedidos/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pedidos",
+								"2"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 19:18:49 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\",\n    \"mensagem\": \"PEEDIDO DELETADO COM SUCESSO\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Produtos",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/produtos/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"produtos",
+						"3"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Produtos",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/produtos/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produtos",
+								"3"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 19:19:00 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\",\n    \"mensagem\": \"PRODUTO DELETADO\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Mesas",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/mesas/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mesas",
+						"2"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Mesas",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/mesas/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"mesas",
+								"2"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 20:28:31 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\",\n    \"mensagem\": \"MESA EXCLUIDA COM SUCESSO\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Pagamentos",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pagamentos/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pagamentos",
+						"2"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Pagamentos",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pagamentos/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pagamentos",
+								"2"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 20:28:52 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\",\n    \"mensagem\": \"MOMENTO DE PAGAMENTO APAGADO COM SUCESSO\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Categorias",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/categorias/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categorias",
+						"3"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Categorias",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/categorias/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias",
+								"3"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 20:29:20 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\",\n    \"mensagem\": \"Item Deletado com Sucesso!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "StatusPedidos",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/statuspedidos/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"statuspedidos",
+						"2"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "StatusPedidos",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/statuspedidos/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"statuspedidos",
+								"2"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 24 Aug 2022 20:29:28 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\",\n    \"mensagem\": \"STATUS DELETADO COM SUCESSO\"\n}"
+				}
+			]
+		}
+	]
+}
