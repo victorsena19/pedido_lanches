@@ -61,18 +61,36 @@ public class PedidoResourse {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Pedido>> getAll(@RequestParam(value = "numero", required = false) Integer numPedido) {
+	public ResponseEntity<List<Pedido>> getAll(
+			@RequestParam(value = "numero", required = false) Integer numPedido,
+			@RequestParam(value = "mesa", required = false) Integer idMesa
+			) {
+		logger.info("numero==" + numPedido);
+		logger.info("mesa=="   + idMesa);
+		List<Pedido> lista = new ArrayList<Pedido>();
+		
 		if (numPedido != null) {
-			List<Pedido> lista = Arrays.asList();
 			Optional<Pedido> pedidonumero = pedidoService.getNumero(numPedido);
 			if (pedidonumero.isPresent()) {
 				lista.add(pedidonumero.get());
 			}
-			return ResponseEntity.ok().body(lista);
 		} else {
-			List<Pedido> list = pedidoService.getAll();
-			return ResponseEntity.ok().body(list);
+			lista = pedidoService.getAll();	
+			}
+		
+		if (idMesa != null) {
+			List<Pedido> novaLista = new ArrayList<Pedido>();
+			for (Pedido pe : lista) {
+				if (pe.getMesa().getId().intValue() == idMesa) {
+					logger.info("Pedido-Add=="   + pe.getId().toString());
+					novaLista.add(pe);
+				}
+			}
+			
+			lista = novaLista;
 		}
+		
+		return ResponseEntity.ok().body(lista);
 
 	}
 
@@ -83,6 +101,7 @@ public class PedidoResourse {
 			@RequestParam(value = "statuspagamento") Long idStatusPedido,
 			@RequestParam(value = "produto", required = false) Long idProduto) {
 		Optional<Pedido> list = pedidoService.getNumero(numPedido);
+		
 		if (list.isEmpty()) {
 			Pedido pedido = new Pedido();
 			Optional<Mesa> mesa = mesaService.getId(idMesa);
