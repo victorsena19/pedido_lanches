@@ -61,7 +61,9 @@ public class PedidoResourse {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Pedido>> getAll(@RequestParam(value = "numero", required = false) Integer numPedido) {
+	public ResponseEntity<List<Pedido>> getAll(
+			@RequestParam(value = "numero", required = false) Integer numPedido,
+			@RequestParam(value = "mesa", required = false)Long mesaId) {
 		if (numPedido != null) {
 			List<Pedido> lista = Arrays.asList();
 			Optional<Pedido> pedidonumero = pedidoService.getNumero(numPedido);
@@ -69,7 +71,14 @@ public class PedidoResourse {
 				lista.add(pedidonumero.get());
 			}
 			return ResponseEntity.ok().body(lista);
-		} else {
+		} 
+		else if(mesaId != null) {
+			List<Pedido> mesa = pedidoService.getMesa(mesaId);
+				
+			return ResponseEntity.ok().body(mesa);
+		}
+		
+		else {
 			List<Pedido> list = pedidoService.getAll();
 			return ResponseEntity.ok().body(list);
 		}

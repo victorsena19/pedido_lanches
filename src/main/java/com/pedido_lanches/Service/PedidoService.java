@@ -9,6 +9,7 @@ import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pedido_lanches.Entity.Mesa;
 import com.pedido_lanches.Entity.Messege;
 import com.pedido_lanches.Entity.Pedido;
 import com.pedido_lanches.Entity.Produto;
@@ -36,6 +37,10 @@ public class PedidoService {
 	public Optional<Pedido> getNumero(Integer numPedido) {
 		Optional<Pedido> list = pedidoRepository.getNumPedido(numPedido);
 		return list;
+	}
+	public List<Pedido> getMesa(Long mesa){
+		List<Pedido> mesaId = pedidoRepository.findByMesaId(mesa);
+		return mesaId;
 	}
 
 	public List<Pedido> getAll() {

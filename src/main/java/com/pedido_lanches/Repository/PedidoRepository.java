@@ -1,4 +1,5 @@
 package com.pedido_lanches.Repository;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,5 +18,5 @@ public interface PedidoRepository extends JpaRepository<Pedido, Long>{
 	@Query("FROM Pedido p WHERE p.numPedido = :numPedido")
 	Optional<Pedido> getNumPedido(@Param("numPedido")Integer numPedido);
 	
-	
+	List<Pedido> findByMesaId(Long mesa);
 }
