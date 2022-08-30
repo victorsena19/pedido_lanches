@@ -15,7 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class Pedido implements Serializable{
@@ -25,6 +25,8 @@ public class Pedido implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Integer numPedido;
+	
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="America/Porto_Velho")
 	private Instant momentoPedido;
 	private Double totalPedido;
 	
@@ -76,7 +78,8 @@ public class Pedido implements Serializable{
 	public void setNumPedido(Integer numPedido) {
 		this.numPedido = numPedido;
 	}
-
+	
+	
 	public Instant getMomentoPedido() {
 		return momentoPedido;
 	}

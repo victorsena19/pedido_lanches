@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.TimeZone;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -88,7 +89,7 @@ public class PedidoResourse {
 	@RequestMapping(method = RequestMethod.POST, consumes = "*/*")
 	public ResponseEntity<Pedido> insert(@RequestParam(value = "numpedido") Integer numPedido,
 			@RequestParam(value = "idmesa") Long idMesa, @RequestParam(value = "totalpedido") Double totalPedido,
-			@RequestParam(value = "momentopedido") Instant momentoPedido,
+			@RequestParam(value = "momentopedido", required = false) Instant momentoPedido,
 			@RequestParam(value = "statuspagamento") Long idStatusPedido,
 			@RequestParam(value = "produto", required = false) Long idProduto) {
 		Optional<Pedido> list = pedidoService.getNumero(numPedido);
@@ -111,9 +112,9 @@ public class PedidoResourse {
 			pedido.setNumPedido(numPedido);
 			pedido.setMesa(mesa.get());
 			pedido.setTotalPedido(totalPedido);
-			pedido.setMomentoPedido(momentoPedido);
+			pedido.setMomentoPedido(momentoPedido.now());
 			pedido.setStatusPedido(statusPedido.get());
-
+			
 			logger.info("PRODUTO-ISPRESENT==" + produto.isPresent());
 
 			if (produto.isPresent()) {
@@ -220,7 +221,7 @@ public class PedidoResourse {
 	
 	@DeleteMapping(path = "/{id}")
 	public ResponseEntity<Messege> delete(@PathVariable Long id){
-		Messege ped =pedidoService.delete(id);
+		Messege ped = pedidoService.delete(id);
 		return ResponseEntity.ok().body(ped);
 	}
 
