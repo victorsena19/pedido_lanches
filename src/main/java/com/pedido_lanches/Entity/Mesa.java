@@ -1,57 +1,48 @@
 package com.pedido_lanches.Entity;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
 
 
 @Entity
+@Table(name = "mesa")
 public class Mesa implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private Integer numero;
+	@JoinColumn(name = "numero")
+	private Long numero;
 
 	public Mesa() {}
 
 
-	public Mesa(Long id, Integer numero) {
+	public Mesa(Long numero) {
 		super();
-		this.id = id;
 		this.numero = numero;
 	}
 
 
-	public Long getId() {
-		return id;
-	}
-
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-
-	public Integer getNumero() {
+	public Long getNumero() {
 		return numero;
 	}
 
 
-	public void setNumero(Integer numero) {
+	public void setId(Long numero) {
 		this.numero = numero;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(numero);
 	}
 
 	@Override
@@ -63,7 +54,7 @@ public class Mesa implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Mesa other = (Mesa) obj;
-		return Objects.equals(id, other.id);
+		return Objects.equals(numero, other.numero);
 	}
 
 }

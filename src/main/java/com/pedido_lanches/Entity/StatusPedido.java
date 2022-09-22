@@ -3,18 +3,25 @@ package com.pedido_lanches.Entity;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "status_pedido")
 public class StatusPedido implements Serializable{
 	private static final long serialVersionUID = 1L;
 	 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JoinColumn(name = "id")
 	private Long id;
+	
+	@JoinColumn(name = "descricao")
 	private String descricao;
 	
 	

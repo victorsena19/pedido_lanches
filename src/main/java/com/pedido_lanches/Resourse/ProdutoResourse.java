@@ -3,9 +3,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -25,11 +28,14 @@ import com.pedido_lanches.Service.ProdutoService;
 @RequestMapping(value = "/produtos")
 public class ProdutoResourse {
 	
+	private static final Logger logger = LogManager.getLogger(MesaResourse.class);
+	
+	@Autowired
 	CategoriaService categoriaService;
 
 	@Autowired
 	private ProdutoService produtoService;
-	
+
 	@RequestMapping(path = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Optional<Produto>> getId(@PathVariable Long id){
 		Optional<Produto> list = produtoService.getId(id);
@@ -51,6 +57,14 @@ public class ProdutoResourse {
 			List<Produto> list = produtoService.getAll();
 			return ResponseEntity.ok().body(list);
 		}
+	}
+	
+	@RequestMapping(path = "/produtopedido/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Optional<Produto>> getProdutoPedido(@PathVariable Long id){
+		logger.info("Produto-ID==" + id.toString());
+		Optional<Produto> produtoPedido = produtoService.getProdutoPedido(id);
+		logger.info("Produto-ID==" + produtoPedido.toString());
+		return ResponseEntity.ok().body(produtoPedido);
 	}
 	
 	@PostMapping

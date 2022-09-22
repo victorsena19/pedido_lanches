@@ -1,18 +1,15 @@
 package com.pedido_lanches.Repository;
-
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-
-import com.pedido_lanches.Entity.Mesa;
-import com.pedido_lanches.Entity.Pedido;
+import com.pedido_lanches.Entity.PedidoProduto;
 
 @Repository
-public interface MesaRepository extends JpaRepository<Mesa, Long>{
-
-	@Query("FROM Mesa m WHERE m.numero = :numero")
-	Optional<Mesa> getNumero(@Param("numero") Long numero);
+public interface PedidoProdutoRepository extends JpaRepository<PedidoProduto, Long>{
+	
+	@Query("FROM PedidoProduto p WHERE p.produto.id = :produtoId")
+	Optional<PedidoProduto> findAllByProduto(@Param("produtoId")Long produto);
 }

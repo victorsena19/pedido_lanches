@@ -1,6 +1,8 @@
+/*
 package com.pedido_lanches.Seed;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -46,7 +48,7 @@ public class addDados implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Mesa m1 = new Mesa(null, 1);
+		Mesa m1 = new Mesa();
 		mesaRepository.save(m1);
 		
 		Pagamento pg1 = new Pagamento(null, Instant.parse("2022-06-09T09:23:07Z"));
@@ -65,12 +67,14 @@ public class addDados implements CommandLineRunner {
 		Produto p4 = new Produto(null, "Coca 1 litro", "Refrigerante de 1 litro", 7.00, null, cat2, null);
 
 		produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4));
-		
+	
 		//Com Variavel
 		//List<Produto> p0 = Arrays.asList(p1, p2);
 
-		Pedido pp1 = new Pedido(null, 1, Instant.parse("2022-06-09T09:23:07Z"), 50.20, m1, Arrays.asList(p1, p2), st1, pg1);
+		
+		Pedido pp1 = new Pedido(null, 1, Instant.now(), 50.20, m1, st1, pg1, null);
 		pedidoRepository.saveAll(Arrays.asList(pp1));
-
 	}
 }
+*/
+

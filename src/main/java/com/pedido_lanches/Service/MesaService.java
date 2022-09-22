@@ -20,16 +20,7 @@ public class MesaService {
 		return list;
 	}
 	
-	public Optional<Mesa> getId(Long id){
-		Optional<Mesa> temp_mesa = mesaRepository.getId(id);
-		
-		if (!temp_mesa.isEmpty()) {
-			return temp_mesa;
-		}
-		return null;	
-	}
-	
-	public Optional<Mesa> getNumero(Integer numero){
+	public Optional<Mesa> getNumero(Long numero){
 		Optional<Mesa> list = mesaRepository.getNumero(numero);
 		return list;
 	}
@@ -45,7 +36,7 @@ public class MesaService {
 	}
 	
 	public Messege delete(Long mesaId) {
-		Optional<Mesa> mesa = mesaRepository.getId(mesaId);
+		Optional<Mesa> mesa = mesaRepository.getNumero(mesaId);
 		if(mesa.isPresent()) {
 			mesaRepository.deleteById(mesaId);
 			return new Messege("OK", "MESA EXCLUIDA COM SUCESSO");

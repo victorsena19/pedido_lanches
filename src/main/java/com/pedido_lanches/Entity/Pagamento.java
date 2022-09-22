@@ -4,18 +4,28 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
 
-	@Entity
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@Entity
+@Table(name = "pagamento")
 public class Pagamento implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JoinColumn(name = "id")
 	private Long id;
+	
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "America/Porto_Velho")
+	@JoinColumn(name = "momento")
 	private Instant momento;
 	
 	public Pagamento() {}

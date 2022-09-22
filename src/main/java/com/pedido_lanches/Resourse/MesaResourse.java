@@ -32,8 +32,8 @@ public class MesaResourse {
 	private MesaService mesaService;
 
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<Mesa> getId(@PathVariable Long id){
-		Optional<Mesa> mesa = mesaService.getId(id);
+	public ResponseEntity<Mesa> getId(@PathVariable Long numero){
+		Optional<Mesa> mesa = mesaService.getNumero(numero);
 		
 		if (!mesa.isEmpty()) {
 			return ResponseEntity.ok().body(mesa.get());
@@ -44,7 +44,7 @@ public class MesaResourse {
 	}
 	@GetMapping
 	public ResponseEntity<List<Mesa>> getNumero(
-			@RequestParam(value = "numero", required = false)Integer numero)
+			@RequestParam(value = "numero", required = false)Long numero)
 	{
 		if(numero != null) {
 			List<Mesa> lista = Arrays.asList();
@@ -62,7 +62,7 @@ public class MesaResourse {
 	
 	@RequestMapping(method = RequestMethod.POST)
 		public ResponseEntity<Mesa> insert(Mesa mesa,
-				@RequestParam(value = "numero")Integer numero){
+				@RequestParam(value = "numero")Long numero){
 		Optional<Mesa> numeroMesa = mesaService.getNumero(numero);
 			logger.info("Mesa======"+mesa.getNumero().toString());
 			if(numeroMesa.isEmpty()) {
@@ -77,11 +77,10 @@ public class MesaResourse {
 	
 	@RequestMapping(method = RequestMethod.PUT, value="/{id}")
 	public Messege atualizaMesa(
-			@PathVariable Long id,
-			@RequestParam(value = "numero") Integer numero){
+			@PathVariable Long numero){
 		if (numero != null) {
-			Optional<Mesa> mesa = mesaService.getId(id);
-			mesa.get().setNumero(numero);
+			Optional<Mesa> mesa = mesaService.getNumero(numero);
+			mesa.get().setId(numero);
 			mesaService.update(mesa.get());
 			return new Messege("OK", "MESA ALTERADA COM SUCESSO!");
 		}
@@ -90,8 +89,8 @@ public class MesaResourse {
 		}
 	}
 	@RequestMapping(method = RequestMethod.DELETE, value="/{id}")
-	public ResponseEntity<Messege> delete(@PathVariable Long id) {
-		Messege mesa = mesaService.delete(id);
+	public ResponseEntity<Messege> delete(@PathVariable Long numero) {
+		Messege mesa = mesaService.delete(numero);
 		return ResponseEntity.ok().body(mesa);
 	}
 	

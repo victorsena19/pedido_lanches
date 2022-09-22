@@ -4,38 +4,56 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Table(name = "produto")
 public class Produto implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JoinColumn(name = "id")
 	private Long id;
+	
+	@JoinColumn(name = "nome")
 	private String nome;
+	
+	@JoinColumn(name = "descricao")
 	private String descricao;
+	
+	@JoinColumn(name = "preco")
 	private Double preco;
+	
+	@JoinColumn(name = "foto")
 	private String foto;
+	
+	@JoinColumn(name = "quantidade")
+	private Integer quantidade;
+	
+	@JoinColumn(name = "pedido")
+	private Long pedido;
 	
 	@ManyToOne
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
 	
 	@JsonIgnore
-	@ManyToMany
-	private List<Pedido> pedido;
+	@OneToMany(mappedBy = "produto")
+	List<PedidoProduto> pedidoProduto;
 	
 	public Produto() {}
 
-	public Produto(Long id, String nome, String descricao, Double preco, String foto, Categoria categoria, List<Pedido> pedido) {
+	public Produto(Long id, String nome, String descricao, Double preco, String foto, Integer quantidade, Long pedido, Categoria categoria, List<PedidoProduto> pedidoProduto) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -85,7 +103,22 @@ public class Produto implements Serializable{
 		this.foto = foto;
 	}
 
-	
+	public Integer getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(Integer quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public Long getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(Long pedido) {
+		this.pedido = pedido;
+	}
+
 	public Categoria getCategoria() {
 		return categoria;
 	}
@@ -93,11 +126,7 @@ public class Produto implements Serializable{
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-
-	public List<Pedido> getPedido() {
-		return pedido;
-	}
-
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -113,8 +142,6 @@ public class Produto implements Serializable{
 			return false;
 		Produto other = (Produto) obj;
 		return Objects.equals(id, other.id);
-	}
-	
-	
+	}	
 
 }

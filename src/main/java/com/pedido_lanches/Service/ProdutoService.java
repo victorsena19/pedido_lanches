@@ -25,6 +25,11 @@ public class ProdutoService {
 		Optional<Produto> list = produtoRepository.getId(id);
 		return list;
 	}
+	
+	public Optional<Produto> getProdutoPedido(Long produto){
+		Optional<Produto> produtoPedido = produtoRepository.findAllByProduto(produto);
+		return produtoPedido;
+	}
 
 	public Optional<Produto> getNome(String nome) {
 		Optional<Produto> list = produtoRepository.getNome(nome.toLowerCase());

@@ -18,6 +18,11 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long>{
 	@Query("FROM Produto p WHERE LOWER(p.nome) like %:nome%")
 	Optional<Produto> getNome(@Param("nome") String nome);
 	
-	
+	@Query(value = "select pr.id, pr.nome, pr.descricao, pr.categoria_id, pr.foto,"
+			+ " (select pp.pedido_id from pedido_produto pp where pp.produto_id = pr.id) as pedido,"
+			+ " (select pp.quantidade_produto from pedido_produto pp where pp.produto_id = pr.id) as quantidade,"
+			+ " (select pp.valor_unitario from pedido_produto pp where pp.produto_id = pr.id) as preco"
+			+ " from produto pr where pr.id = :produto", nativeQuery = true)
+	Optional<Produto> findAllByProduto(@Param("produto")Long produto);
 	
 }
