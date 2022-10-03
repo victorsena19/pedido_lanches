@@ -21,13 +21,12 @@ public class PedidoProduto implements Serializable{
 	@JoinColumn(name = "id")
 	private Long id;
 	
-	
 	@ManyToOne
-	@JoinColumn(name = "produto_id")
+	@JoinColumn(name = "produto_id", table = "pedido_produto")
 	private Produto produto;
 	
 	@ManyToOne
-	@JoinColumn(name = "pedido_id")
+	@JoinColumn(name = "pedido_id", table = "pedido_produto")
 	private Pedido pedido;
 	
 	@JoinColumn(name = "quantidade_produto")
@@ -36,16 +35,20 @@ public class PedidoProduto implements Serializable{
 	@JoinColumn(name = "valor_unitario")
 	private Double valorUnitario;
 	
+	@JoinColumn(name = "valor_total_produto")
+	private Double valorTotalProduto;
+	
 	public PedidoProduto() {}
 	
 	public PedidoProduto(Long id, Produto produto, Pedido pedido, Integer quantidadeProduto,
-			Double valorUnitario) {
+			Double valorUnitario, Double valorTotalProduto) {
 		super();
 		this.id = id;
 		this.produto = produto;
 		this.pedido = pedido;
 		this.quantidadeProduto = quantidadeProduto;
 		this.valorUnitario = valorUnitario;
+		this.valorTotalProduto = valorTotalProduto;
 	}
 
 	public Long getId() {
@@ -80,13 +83,20 @@ public class PedidoProduto implements Serializable{
 		this.quantidadeProduto = quantidadeProduto;
 	}
 	
-
 	public Double getValorUnitario() {
 		return valorUnitario;
 	}
 
 	public void setValorUnitario(Double valorUnitario) {
 		this.valorUnitario = valorUnitario;
+	}
+
+	public Double getValorTotalProduto() {
+		return valorTotalProduto;
+	}
+
+	public void setValorTotalProduto(Double valorTotalProduto) {
+		this.valorTotalProduto = valorTotalProduto;
 	}
 
 	@Override

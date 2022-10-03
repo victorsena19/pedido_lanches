@@ -16,16 +16,21 @@ public class PedidoProdutoService {
 	private PedidoProdutoRepository pedidoProdutoRepository;
 	
 	public List<PedidoProduto> getAll(){
-		List<PedidoProduto> list = pedidoProdutoRepository.findAll();
+		List<PedidoProduto> list = pedidoProdutoRepository.getAll();
 		return list;
 	}
-
-	public Optional<PedidoProduto> getProduto(Long produto){
-		Optional<PedidoProduto> getProduto = pedidoProdutoRepository.findAllByProduto(produto);
+	
+	public Optional<PedidoProduto> getProduto(Long id){
+		Optional<PedidoProduto> getProduto = pedidoProdutoRepository.findAllByProduto(id);
 		return getProduto;
 	}
+
+	public List<PedidoProduto> getPedido(Long id){
+		List<PedidoProduto> getPedido = pedidoProdutoRepository.findAllByPedido(id);
+		return getPedido;
+	}
 	
-	public PedidoProduto save(PedidoProduto pedidoProduto) {
+	public PedidoProduto saveDados(PedidoProduto pedidoProduto) {
 		PedidoProduto saveDados = pedidoProdutoRepository.save(pedidoProduto);
 		return saveDados;
 	}
